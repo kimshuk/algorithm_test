@@ -5,31 +5,27 @@
 let fs = require('fs');
 let input = fs.readFileSync('./input.txt').toString().split('\n');
 
-const wLength = Number(input[0]);
+const wordlength = Number(input[0]);
+let groupWordNum = 0;
 
-let wordNum = 0;
-
-for (let i = 1; i <= wLength; i++) {
-  const letter = [];
-  const word = input[i];
+for (let i = 1; i <= wordlength; i++) {
+  const currentWord = input[i]; // happy;
+  const arr = [];
   let isGroupWord = true;
 
-  for (let j = 0; j < word.length; j++) {
-    // 전에 없었던 문자이면 array에 저장
-    if (letter.indexOf(word[j]) === -1) {
-      letter.push(word[j]);
-    } else {
-      // 전에 있었던 문자인데 연속된 문자가 아닐 경우 (바로 전에 있던 문자가 아닐경우)
-      if (letter.indexOf(word[j]) !== letter.length - 1) {
-        isGroupWord = false;
-        break;
-      }
+  for (let j = 0; j < currentWord.length; j++) {
+    // arr에서 현재 캐릭터를 못찾으면 arr에 추가
+    if (arr.indexOf(currentWord[j]) === -1) {
+      arr.push(currentWord[j]);
+    } else if (arr.indexOf(currentWord[j]) !== arr.length - 1) {
+      isGroupWord = false;
+      break;
     }
   }
 
   if (isGroupWord) {
-    wordNum += 1;
+    groupWordNum += 1;
   }
 }
 
-console.log(wordNum, 'wordNum');
+console.log(groupWordNum);
