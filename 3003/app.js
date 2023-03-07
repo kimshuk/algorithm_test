@@ -1,4 +1,5 @@
 // 백준 route
+// let fs = require('fs');
 // let input = fs.readFileSync('/dev/stdin').toString().split(' ');
 
 //한 줄 입력
