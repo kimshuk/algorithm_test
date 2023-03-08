@@ -6,19 +6,12 @@ let fs = require('fs');
 let input = fs.readFileSync('./input.txt').toString().trim();
 
 const num_input = Number(input);
-const row = 2 * input - 1;
-console.log(num_input);
-console.log(row);
+let empty = ' ';
+let dot = '*';
 
-for (let i = 0; i < num_input * 2 - 1; i++) {
-  let empty = ' ';
-  let dot = '*';
-  if (i < num_input) {
-    console.log(empty.repeat(num_input - i) + dot.repeat(1 + 2 * i));
-  } else {
-    console.log(
-      empty.repeat(Math.abs(num_input - i)) +
-        dot.repeat(row - 2 * (i - num_input))
-    );
-  }
+for (let i = 1; i <= num_input; i++) {
+  console.log(empty.repeat(num_input - i) + dot.repeat(2 * i - 1));
+}
+for (let i = num_input - 1; i >= 1; i--) {
+  console.log(empty.repeat(num_input - i) + dot.repeat(2 * i - 1));
 }
