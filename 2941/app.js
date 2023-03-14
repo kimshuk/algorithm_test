@@ -8,7 +8,7 @@ let input = fs.readFileSync('./input.txt').toString().trim();
 const croAlpha = ['c=', 'c-', 'dz=', 'd-', 'lj', 'nj', 's=', 'z='];
 
 for (let alpha of croAlpha) {
-  input = input.split(alpha).join('Q');
+  input = input.replace(new RegExp(alpha, 'ig'), 'Q');
 }
 
 console.log(input.length);
